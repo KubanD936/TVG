@@ -22,9 +22,8 @@ public class App {
             String year_of_Release = detailed[2];
             String genre = detailed[3];
             String publisher = detailed[4];
-            String na_Sales = detailed[5];
 
-            games.add(new Game(name, platform, year_of_Release, genre, publisher, na_Sales));
+            games.add(new Game(name, platform, year_of_Release, genre, publisher));
         }
         //Print out results
         System.out.println(games);
