@@ -19,7 +19,8 @@ public class App {
             String[] detailed = currentLine.split(",");
             String name = detailed[0];
             String platform = detailed[1];
-            games.add(new Game(name, platform));
+            String year_of_Releas = detailed[2];
+            games.add(new Game(name, platform, year_of_Releas));
         }
         //Print out results
         System.out.println(games);
