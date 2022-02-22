@@ -3,12 +3,17 @@ package VideoGames;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class App {
     public static void main(String[] args) throws IOException {
-        //Reads the csv, had to put path to file since just file name was not working, despite being located in resources
-        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\K\\GitHub\\TVG\\src\\main\\resources\\Video_Games.csv"));
+        //Reads the csv
+        InputStreamReader reader =  new InputStreamReader(Objects.requireNonNull(App.class.getResourceAsStream("/Video_Games.csv")));
+        BufferedReader br = new BufferedReader(reader);
+//        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\K\\GitHub\\TVG\\src\\main\\resources\\Video_Games.csv"));
 
         ArrayList<Game> games = new ArrayList<>();
         //While loop used to read line while not equal to null
