@@ -12,11 +12,11 @@ import java.util.Objects;
 
 public class App {
     public static void main(String[] args) {
-        Game.build();
+        GameContext.build();
 
         // Serve on Tomcat server
         try {
-            Game.getTomcat().start();
+            GameContext.getTomcat().start();
         } catch (LifecycleException e) {
             System.err.println("Embedded server failed to start!");
         }

@@ -6,13 +6,34 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-
+//DefaultServlet
 public class GameController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String result = GameContext.getGameService().searchByName(name);
         resp.getWriter().println(result);
+        String HTMLForm = "<HTML>\n" +
+                "<Head>\n" +
+                "<Title> Search Games\n" +
+                "    <Title>\n" +
+                "    <Head>\n" +
+                "    <h1>Game Search<h1>\n" +
+                "    <form action = 'game' method='get'>\n" +
+                "    <input type ='name' name = 'searchName'\n" +
+                "    <input type ='submit' value = 'Search'>\n" +
+                "    \n" +
+                "    <a href ='games'> See Full Games<a>\n" +
+                "    <form>\n" +
+                "    <Body>\n" +
+                "    <Html>\n";
+        resp.getWriter().println(HTMLForm);
+        //if results return null in case file is not found
+        if (result == null) {
+            resp.getStatus();
+            resp.getWriter().println("File Not Found");
+            return;
+        }
     }
 
     @Override
@@ -34,7 +55,7 @@ public class GameController extends HttpServlet {
         String developer = req.getParameter("developer");
         String rating = req.getParameter("rating");
 
-        GameContext.getGameService().saveGame(new Game(name, platform, year_of_release, genre, publisher, na_sales , eu_sales , jp_sales, other_sales, global_sales, critic_score, critic_count, user_score, user_count, developer, rating));
+        GameContext.getGameService().saveGame(new Game(name, platform, year_of_release, genre, publisher, na_sales , eu_sales ,
+                jp_sales, other_sales, global_sales, critic_score, critic_count, user_score, user_count, developer, rating));
     }
-
 }

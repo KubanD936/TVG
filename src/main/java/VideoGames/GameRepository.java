@@ -41,7 +41,7 @@ public class GameRepository {
         try {
             Statement statement = connection.createStatement();
             statement.execute("INSERT INTO GAMES VALUES(" + game.getName() + ", '" + game.getPublisher() + ",'"
-                    + game.getYear_of_release() + ",'"+ game.getGenre() + ",'"
+                    + game.getYear_of_release() + ",'" + game.getGenre() + ",'"
                     + game.getPublisher() + ",'" + game.getNa_sales() + ",'"
                     + game.getEu_sales() + ",'" + game.getJp_sales() + ",'"
                     + game.getOther_sales() + ",'" + game.getGlobal_sales() + ",'"
@@ -83,11 +83,6 @@ public class GameRepository {
         } catch (CsvException e) {
             System.err.println("Reader did not close properly");
         }
-
-        // Parse lines into array
-        assert lines != null;
-        for (String[] columns : lines) {
-            games.add(new Game(Parse.parseString(columns[0]), columns[1]));
-        }
     }
 }
+
